@@ -31,7 +31,7 @@ Install other dependencies using the requirements file in the app folder:
 $ pip install -r requirements.txt
 ```
 
-Note: You can also use a virtualenv to create a virtual environment and install the requirements.
+Note: You can also use 'virtualenv' to create a virtual environment and install the requirements.
 
 ### Creating a Dropbox App
 
@@ -79,9 +79,8 @@ Make a note of the https url next to the heading 'Forwarding'. Ex- https://6c2c3
 
 - Go back to your app settings page on the Dropbox developer console
 - Add the ngrok url you obtained in the previous step to webhook and redirect_uri as shown in example below-
-Webhook URI - <https_ngrok_url>/webhook
-
-Redirect URI - <https_ngrok_url>/oauth_callback
+    - Webhook URI - <https_ngrok_url>/webhook
+    - Redirect URI - <https_ngrok_url>/oauth_callback
 
 ### Usage of app
 - Go to the ngrok URL <https_ngrok_url> on your web browser
