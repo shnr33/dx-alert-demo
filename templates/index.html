@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block body %}
+    <!-- Styles -->
+    <style type="text/css">
+        form#add-email {padding: 10px;}
+    </style>
+    <!-- Container-->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Welcome</h3>
+                </div>
+                
+                <form id="add-email" action="{{ url_for('dropbox_connect') }}"  method="post">
+                    <p> Enter your email to receive the alerts:</p>
+                    <input type="email" name="email">
+                    <br/><br/>
+                    <input type="submit"  class="btn btn-primary" value="Connect with Dropbox">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

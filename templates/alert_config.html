@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+ 
+{% block body %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-info">
+            <div style="padding:10px;">
+            <p>That's it! You should now see a folder "<code>Dropbox/Apps/DX-Alert-Demo</code>" in your Dropbox account<br>(If you deployed this app yourself, the name of that folder will instead match the name you gave when you created your Dropbox app.)</p>
+            <p>Put any files in the folder or create a new folder to trigger the email alert given that email alert is enabled.</p>
+            <p>Note: You will also recieve an alert when you delete a file/folder.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-info">
+            <div style="padding:10px;">
+                <p>Following user(s) are configured to receive alerts:</p>
+                <form id="change_alert" action="{{ url_for('change_alert') }}"  method="post">
+                    <table border="0" cellspacing="0" cellpadding="0" style="border-right:1px solid #ddd; border-bottom: 1px solid #ddd; width: 100%;">
+                        <thead>
+                            <tr style="background: #ADADAD;">
+                                <th style="padding: 8px; line-height: 20px; text-align: left; vertical-align: top; border-top: 1px solid #ddd; border-left: 1px solid #ddd;" >Email</th>
+                                <th style="padding: 8px; line-height: 20px; text-align: center; vertical-align: top; border-top: 1px solid #ddd; border-left: 1px solid #ddd;" >Alert Enabled?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for user in users %}
+                                <tr style="color: black;">
+                                    <td style="padding: 8px; line-height: 20px; text-align: left; vertical-align: top; border-top: 1px solid #ddd; border-left: 1px solid #ddd;">{{ user.email }}</td>
+                                    <!--<td style="padding: 8px; line-height: 20px; text-align: center; vertical-align: top; border-top: 1px solid #ddd; border-left: 1px solid #ddd;"><label><input name="alert_check" type="checkbox" value="{{user.uid}}" {% if user.alert_enabled == 1 %} checked {% endif %}></label></td>-->
+                                    <td style="padding: 8px; line-height: 20px; text-align: center; vertical-align: top; border-top: 1px solid #ddd; border-left: 1px solid #ddd;">
+                                        <select name="alert_check">
+                                          <option value="{{user.email}}-Yes" {% if user.alert_enabled == 1 %} selected {% endif %}>Yes</option>
+                                          <option value="{{user.email}}-No" {% if user.alert_enabled == 0 %} selected {% endif %}>No</option>
+                                        </select>
+                                    </td>
+                                    
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <br>
+                    <input type="submit"  class="btn btn-primary" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

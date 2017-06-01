@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body style="border:1px solid #ddd; color:black; border-radius: 5px;">
+<div style="height:55px; width:100%; background-color: #007ee5; border-radius: 5px 5px 0px 0px;">
+</div>
+<div style="padding: 5px;">
+    <p style="font-size:13px; text-align: left; padding: 5px 0px;">
+        Dear {{user_name}},
+        <br/>
+        Please find the summary of changes to your dropbox folder below:
+    </p>
+    {% if new_files %}
+    <p>Following files were newly added to your folder:</p>
+    <ul>
+        {% for item in new_files %}
+            <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+    {% endif%}
+
+    {% if new_folders|length > 0 %}
+    <p>Following sub-folders were newly added to your folder:</p>
+    <ul>
+        {% for item in new_folders %}
+            <li>{{ item }}</a></li>
+        {% endfor %}
+    </ul>
+    {% endif%}
+
+    {% if deleted_files|length > 0 %}
+    <p>Following files/folders were deleted from your folder:</p>
+    <ul>
+        {% for item in deleted_files %}
+            <li>{{ item }}</a></li>
+        {% endfor %}
+    </ul>
+    {% endif%}
+
+    <br/>
+    <p style="font-size:13px; text-align: left; padding: 5px 0px;">
+        Thank you for using our service.
+        <br/><br/>
+        Regards, <br/>
+        Team DX-Alert
+    </p>
+</div>
+</body>
+</html>
