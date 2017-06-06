@@ -1,6 +1,6 @@
 # DX Alert Demo
 
-DX Alert Demo is a Flask application which authenticates a Dropbox account and listens for events on a Dropbox app folder and sends out email alerts for the configured email ids.
+DX Alert Demo is a Flask application which authenticates a Dropbox account and listens for events on Dropbox folders and sends out email alerts for the configured email ids.
 
 ## Installation
 
@@ -49,12 +49,12 @@ DX Alert Demo requires an app to be created in the Dropbox developer console.
 
 Setup Flask app:
 
-Open "config_file.cfg" and edit the values of APP_KEY and APP_SECRET you noted down in the previous step.
+Open "config_file.cfg" and edit the values of APP_KEY and APP_SECRET you noted down in the previous step and save the file.
 
 Enter following commands in the terminal window where you activated the flask environment to run the app:
 ```sh
-$ EXPORT FLASK_APP=app
-$ EXPORT FLASK_DEBUG=1 # (optional) to enable debug mode, also for not restarting the server after every change
+$ export FLASK_APP=app.py
+$ export FLASK_DEBUG=1 # (optional) to enable debug mode, also for not restarting the server after every change
 $ flask initdb # initialises the Database
 $ flask run
 ```
@@ -71,7 +71,7 @@ ngrok is required since the webhook and redirect URI to be configured on Dropbox
 ```sh
 $ ./ngrok http 5000
 ```
-This will start ngrok service and provide you with a publicly available URL whcih forwards requests to your localhost web server running on port 5000.
+This will start ngrok service and provide you with a publicly available URL which forwards requests to your localhost web server running on port 5000.
 
 Make a note of the https url next to the heading 'Forwarding'. Ex- https://6c2c3989.ngrok.io
 
